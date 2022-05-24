@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AbbreviateServiceImpl implements AbbreviateService {
     private final LinkService linkService;
+    private final String WEBSITE = "https://link-abbreviator.herokuapp.com/";
 
     @Autowired
     public AbbreviateServiceImpl(LinkService linkService) {
@@ -21,7 +22,7 @@ public class AbbreviateServiceImpl implements AbbreviateService {
         uri = addHttpsToTheBeginningIfIsNotHere(uri);
 
         RandomString randomString = new RandomString(4);
-        String abbreviated = "http://localhost:8080/" + randomString.getRandomString();
+        String abbreviated = WEBSITE + randomString.getRandomString();
 
         return linkService.save(new Link(uri, abbreviated));
     }
