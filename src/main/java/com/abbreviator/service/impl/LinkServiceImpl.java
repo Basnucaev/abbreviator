@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class LinkServiceImpl implements LinkService {
     private final LinkRepository linkRepository;
-    private final String WEBSITE = "http://localhost:8080/";
+    private final String WEBSITE = "https://link-abbreviator.herokuapp.com/";
 
     @Autowired
     public LinkServiceImpl(LinkRepository linkRepository) {
