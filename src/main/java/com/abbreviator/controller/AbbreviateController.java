@@ -1,5 +1,6 @@
 package com.abbreviator.controller;
 
+import com.abbreviator.controller.help.RequestObjectLink;
 import com.abbreviator.entity.Link;
 import com.abbreviator.service.AbbreviateService;
 import com.abbreviator.service.LinkService;
@@ -23,8 +24,8 @@ public class AbbreviateController {
     }
 
     @PostMapping("/abbreviate")
-    public ResponseEntity<Link> abbreviateLink(@RequestBody String uri) {
-        Link abbreviatedLink = abbreviateService.abbreviateURI(uri);
+    public ResponseEntity<Link> abbreviateLink(@RequestBody RequestObjectLink requestObjectLink) {
+        Link abbreviatedLink = abbreviateService.abbreviateURI(requestObjectLink);
 
         return new ResponseEntity<>(abbreviatedLink, HttpStatus.OK);
     }

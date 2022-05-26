@@ -1,5 +1,6 @@
 package com.abbreviator.service.impl;
 
+import com.abbreviator.controller.help.RequestObjectLink;
 import com.abbreviator.entity.Link;
 import com.abbreviator.service.AbbreviateService;
 import com.abbreviator.service.LinkService;
@@ -18,13 +19,14 @@ public class AbbreviateServiceImpl implements AbbreviateService {
     }
 
     @Override
-    public Link abbreviateURI(String uri) {
-        uri = addHttpsToTheBeginningIfIsNotHere(uri);
+    public Link abbreviateURI(RequestObjectLink link) {
+        String linkURI = link.getLink();
+        linkURI = addHttpsToTheBeginningIfIsNotHere(linkURI);
 
         RandomString randomString = new RandomString(4);
         String abbreviated = WEBSITE + randomString.getRandomString();
 
-        return linkService.save(new Link(uri, abbreviated));
+        return linkService.save(new Link(linkURI, abbreviated));
     }
 
     private String addHttpsToTheBeginningIfIsNotHere(String uri) {
