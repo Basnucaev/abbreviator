@@ -20,19 +20,20 @@ public class AbbreviateServiceImpl implements AbbreviateService {
 
     @Override
     public Link abbreviateURI(RequestObjectLink link) {
-        String linkURI = addHttpsToTheBeginningIfIsNotHere(link.getLink());
+        String linkString = link.getLink();
+        String assignedLink = addHttpsToTheBeginningIfIsNotHere(linkString);
 
         RandomString randomString = new RandomString(4);
         String abbreviated = WEBSITE + randomString.getRandomString();
 
-        return linkService.save(new Link(linkURI, abbreviated));
+        return linkService.save(new Link(assignedLink, abbreviated));
     }
 
     private String addHttpsToTheBeginningIfIsNotHere(String uri) {
-        if (!uri.contains("https://") || !uri.contains("http://")) {
-            return "https://" + uri;
-        } else {
+        if (uri.contains("https://") || uri.contains("http://")) {
             return uri;
+        } else {
+            return "https://" + uri;
         }
     }
 }
