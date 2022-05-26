@@ -20,8 +20,7 @@ public class AbbreviateServiceImpl implements AbbreviateService {
 
     @Override
     public Link abbreviateURI(RequestObjectLink link) {
-        String linkURI = link.getLink();
-        linkURI = addHttpsToTheBeginningIfIsNotHere(linkURI);
+        String linkURI = addHttpsToTheBeginningIfIsNotHere(link.getLink());
 
         RandomString randomString = new RandomString(4);
         String abbreviated = WEBSITE + randomString.getRandomString();
