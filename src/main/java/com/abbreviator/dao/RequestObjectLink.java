@@ -1,4 +1,4 @@
-package com.abbreviator.controller.help;
+package com.abbreviator.dao;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

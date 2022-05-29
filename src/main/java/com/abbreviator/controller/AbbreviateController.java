@@ -1,16 +1,14 @@
 package com.abbreviator.controller;
 
-import com.abbreviator.controller.help.RequestObjectLink;
+import com.abbreviator.dao.RequestObjectLink;
 import com.abbreviator.entity.Link;
 import com.abbreviator.service.AbbreviateService;
-import com.abbreviator.service.LinkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController

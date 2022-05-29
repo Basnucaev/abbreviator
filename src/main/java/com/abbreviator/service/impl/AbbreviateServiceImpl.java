@@ -1,6 +1,6 @@
 package com.abbreviator.service.impl;
 
-import com.abbreviator.controller.help.RequestObjectLink;
+import com.abbreviator.dao.RequestObjectLink;
 import com.abbreviator.entity.Link;
 import com.abbreviator.service.AbbreviateService;
 import com.abbreviator.service.LinkService;
