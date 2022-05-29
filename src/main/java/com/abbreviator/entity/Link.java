@@ -31,6 +31,9 @@ public class Link {
     @Column(name = "date_of_create")
     private LocalDateTime dateOfCreate;
 
+    @Column(name = "used_count")
+    private int usedCount;
+
     public Link() {
         this.dateOfCreate = LocalDateTime.now();
     }

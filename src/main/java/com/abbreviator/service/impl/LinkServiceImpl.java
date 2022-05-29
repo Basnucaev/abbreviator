@@ -20,7 +20,9 @@ public class LinkServiceImpl implements LinkService {
     @Override
     public Link findLinkByAbbreviate(String abbreviate) {
         Link link = linkRepository.findLinkByAbbreviated(WEBSITE + abbreviate);
-        if (link != null) {
+
+        if (link != null && !isAllUsagesHasSpent(link)) {
+            link.setUsedCount(link.getUsedCount() + 1);
             return link;
         } else {
             throw new LinkNotFoundException();
@@ -31,5 +33,14 @@ public class LinkServiceImpl implements LinkService {
     public Link save(Link link) {
         linkRepository.save(link);
         return link;
+    }
+
+    private boolean isAllUsagesHasSpent(Link link) {
+        if (link.getUsedCount() >= 5) {
+            linkRepository.delete(link);
+            return true;
+        } else {
+            return false;
+        }
     }
 }
