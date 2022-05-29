@@ -7,6 +7,8 @@ import com.abbreviator.service.LinkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class LinkServiceImpl implements LinkService {
     private final LinkRepository linkRepository;
@@ -23,7 +25,8 @@ public class LinkServiceImpl implements LinkService {
 
         if (link != null && !isAllUsagesHasSpent(link)) {
             link.setUsedCount(link.getUsedCount() + 1);
-            return link;
+
+            return save(link);
         } else {
             throw new LinkNotFoundException();
         }
@@ -33,6 +36,11 @@ public class LinkServiceImpl implements LinkService {
     public Link save(Link link) {
         linkRepository.save(link);
         return link;
+    }
+
+    @Override
+    public List<Link> getAllLinks() {
+        return linkRepository.findAll();
     }
 
     private boolean isAllUsagesHasSpent(Link link) {
