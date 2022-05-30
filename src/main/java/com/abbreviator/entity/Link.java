@@ -34,13 +34,18 @@ public class Link {
     @Column(name = "used_count")
     private int usedCount;
 
+    @Column(name = "valid_until")
+    private LocalDateTime validUntil;
+
     public Link() {
         this.dateOfCreate = LocalDateTime.now();
+        this.validUntil = LocalDateTime.now().plusHours(24);
     }
 
     public Link(String link, String abbreviated) {
         this.link = link;
         this.abbreviated = abbreviated;
         this.dateOfCreate = LocalDateTime.now();
+        this.validUntil = LocalDateTime.now().plusHours(24);
     }
 }
