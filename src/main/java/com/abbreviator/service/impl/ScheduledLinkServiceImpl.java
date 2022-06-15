@@ -19,7 +19,7 @@ public class ScheduledLinkServiceImpl implements ScheduledLinkService {
     }
 
     @Override
-    @Scheduled(fixedDelay = 86400000)
+    @Scheduled(fixedDelay = 5000)
     public void checkLinksTimeAndDeleteIfTimeHasCome() {
         List<Link> links = linkRepository.findLinksByUsageTimeWasEnd();
 
