@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -21,7 +22,7 @@ public class ScheduledLinkServiceImpl implements ScheduledLinkService {
     @Override
     @Scheduled(fixedDelay = 5000)
     public void checkLinksTimeAndDeleteIfTimeHasCome() {
-        List<Link> links = linkRepository.findLinksByUsageTimeWasEnd();
+        List<Link> links = linkRepository.findLinksByUsageTimeWasEnd(LocalDateTime.now());
 
         if (links.size() > 0) {
             linkRepository.deleteAll(links);
