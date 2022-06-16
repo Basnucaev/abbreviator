@@ -8,11 +8,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "link")
+@Table(name = "link", indexes = {
+        @Index(columnList = "abbreviated", name = "index_abbreviated", unique = true),
+        @Index(columnList = "valid_until", name = "index_valid_until")}
+)
 @Getter
 @Setter
 public class Link {
