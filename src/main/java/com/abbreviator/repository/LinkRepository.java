@@ -13,6 +13,6 @@ import java.util.List;
 public interface LinkRepository extends JpaRepository<Link, Long> {
     Link findLinkByAbbreviated(String abbreviate);
 
-    @Query("from Link link where link.validUntil < :current_time")
-    List<Link> findLinksByUsageTimeWasEnd(@Param("current_time") LocalDateTime currentTime);
+    @Query("from Link link where link.validUntil < ?1")
+    List<Link> findLinksByUsageTimeWasEnd(LocalDateTime currentTime);
 }
