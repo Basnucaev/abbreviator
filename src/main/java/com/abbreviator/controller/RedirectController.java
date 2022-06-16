@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -20,7 +21,7 @@ public class RedirectController {
     }
 
     @Operation(summary = "Перенаправляет пользователя по его core ссылке")
-    @RequestMapping("/{abbreviate}")
+    @GetMapping("/{abbreviate}")
     public String goToRootSite(@PathVariable String abbreviate) {
         Link link = linkService.findLinkByAbbreviate(abbreviate);
 
