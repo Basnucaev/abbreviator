@@ -21,7 +21,7 @@ public class ScheduledLinkServiceImpl implements ScheduledLinkService {
     }
 
     @Override
-    @Scheduled(fixedDelay = 5000)
+    @Scheduled(fixedDelay = 3600000)
     public void checkLinksTimeAndDeleteIfTimeHasCome() {
         ZoneId zoneId = ZoneId.of("Europe/Moscow");
         List<Link> links = linkRepository.findLinksByUsageTimeWasEnd(LocalDateTime.now(zoneId));
