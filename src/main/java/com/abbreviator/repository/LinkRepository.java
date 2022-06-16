@@ -11,6 +11,6 @@ import java.util.List;
 public interface LinkRepository extends JpaRepository<Link, Long> {
     Link findLinkByAbbreviated(String abbreviate);
 
-    @Query("from Link link where link.validUntil < current_time")
+    @Query("from Link link where link.validUntil < current_date")
     List<Link> findLinksByUsageTimeWasEnd();
 }
